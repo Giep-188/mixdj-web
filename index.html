@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101014"><meta name="description" content="MixDj: plataforma de pruebas para la locutora virtual DJ.">
+  <link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="styles.css">
+  <title>MixDj — Tu música, tu ambiente</title>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#inicio"><span class="brand-mark">M</span><span>Mix<span class="accent">Dj</span></span></a>
+    <nav><a class="nav active" href="#inicio">⌂ <span>Inicio</span></a><a class="nav" href="#biblioteca">▤ <span>Tu biblioteca</span></a><a class="nav" href="#locutora">✦ <span>Locutora DJ</span></a></nav>
+    <div class="side-note"><span class="live-dot"></span> Entorno de pruebas<br><small>Versión web 0.1.0</small></div>
+  </aside>
+  <main id="inicio">
+    <header class="topbar"><div><span class="eyebrow">TU ESPACIO MUSICAL</span><h1>Buenas vibras. Mejor música.</h1></div><button class="profile" title="Perfil de prueba">G</button></header>
+    <section class="hero">
+      <div class="hero-copy"><span class="pill">MIXDJ · EXPERIENCIA DE PRUEBA</span><h2>La música tiene<br><em>otra voz.</em></h2><p>Prueba la locutora virtual, ajusta su personalidad y escucha cómo acompaña tus canciones.</p><button class="primary" id="goDj">Configurar locutora <b>→</b></button></div>
+      <div class="hero-art"><div class="orb orb1"></div><div class="orb orb2"></div><div class="equalizer"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="art-label">YOUR SOUND<br><strong>YOUR MIX</strong></div></div>
+    </section>
+    <section class="section" id="biblioteca"><div class="section-head"><div><span class="eyebrow">REPRODUCCIÓN LOCAL</span><h2>Tu biblioteca de prueba</h2></div><label class="upload">＋ Añadir canciones<input id="files" type="file" accept="audio/*" multiple hidden></label></div>
+      <div class="notice">Carga archivos de audio desde tu dispositivo. Esta versión reproduce archivos locales; no incluye un catálogo comercial ni transmite música protegida.</div>
+      <div class="track-table"><div class="track-header"><span>#</span><span>TÍTULO</span><span>FORMATO</span><span>ACCIÓN</span></div><div id="trackList" class="empty">Aún no has añadido canciones. Selecciona archivos de audio para comenzar.</div></div>
+    </section>
+    <section class="section dj-section" id="locutora"><div class="section-head"><div><span class="eyebrow">MÓDULO EN DESARROLLO</span><h2>Tu locutora virtual</h2></div><label class="toggle"><input type="checkbox" id="djEnabled" checked><span></span><b id="enabledText">Activada</b></label></div>
+      <div class="dj-grid">
+        <div class="panel voice-panel"><div class="panel-top"><div class="avatar">✦</div><div><b>MixDj Voice</b><small id="voiceStatus">Preparando voces del navegador…</small></div><span class="status-chip" id="statusChip">LISTA</span></div>
+          <label class="field-label" for="personality">Personalidad</label><select id="personality"><option value="warm">Cálida</option><option value="energetic">Enérgica</option><option value="elegant">Elegante</option><option value="relaxed">Relajada</option></select>
+          <div class="range-row"><label for="rate">Velocidad de voz <b id="rateValue">1.00×</b></label><input type="range" id="rate" min="0.7" max="1.3" step="0.05" value="1"></div>
+          <div class="range-row"><label for="pitch">Tono <b id="pitchValue">1.00</b></label><input type="range" id="pitch" min="0.8" max="1.2" step="0.05" value="1"></div>
+          <div class="range-row"><label for="interval">Pausa entre comentarios <b id="intervalValue">30 s</b></label><input type="range" id="interval" min="0" max="300" step="5" value="30"></div>
+          <label class="field-label" for="voice">Voz disponible en este navegador</label><select id="voice"><option value="">Automática (español)</option></select>
+          <div class="button-row"><button class="primary" id="testVoice">▶ Probar voz</button><button class="secondary" id="stopVoice">Detener</button></div>
+        </div>
+        <div class="panel studio-panel"><span class="eyebrow">ESTUDIO DJ</span><h3>Prueba una intervención</h3><p>Simula una presentación o un comentario entre canciones. La locutora utiliza los datos que ingreses; no inventa información musical.</p>
+          <label class="field-label" for="customMessage">Mensaje personalizado</label><textarea id="customMessage" rows="3" placeholder="Escribe aquí lo que quieres que diga la locutora…"></textarea><button class="secondary full" id="sayCustom">Hablar mensaje</button>
+          <div class="divider"></div><div class="demo-track"><div class="cover">♫</div><div><b id="demoTitle">Una nueva canción</b><small id="demoArtist">Artista de prueba</small></div></div>
+          <div class="button-row"><button class="secondary" id="demoIntro">Presentar canción</button><button class="secondary" id="demoTransition">Comentario de transición</button></div>
+          <div class="activity"><span class="live-dot"></span><span id="activityText">Esperando una prueba de locución.</span></div>
+        </div>
+      </div>
+    </section>
+    <footer>MixDj Web · Plataforma experimental · Los ajustes se guardan en este navegador.</footer>
+  </main>
+  <div class="player"><div class="now-playing"><div class="mini-cover">♫</div><div><b id="nowTitle">Sin canción</b><small id="nowArtist">Añade música local</small></div></div><div class="controls"><div class="control-buttons"><button id="prev" aria-label="Anterior">|◀</button><button class="play" id="play" aria-label="Reproducir">▶</button><button id="next" aria-label="Siguiente">▶|</button></div><div class="progress"><span id="elapsed">0:00</span><input id="seek" type="range" min="0" max="1000" value="0"><span id="duration">0:00</span></div></div><div class="volume">♫ <input id="volume" type="range" min="0" max="1" step="0.05" value="0.8"></div></div>
+  <audio id="audio" preload="metadata"></audio><script src="app.js"></script>
+</body></html>
